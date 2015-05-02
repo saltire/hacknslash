@@ -27,9 +27,9 @@ public class Agent : MonoBehaviour {
 		return alive;
 	}
 
-	void OnCollisionEnter(Collision collision) {
-		if (collision.gameObject.tag == "Player") {
-			DamageScript script = collision.gameObject.GetComponent<DamageScript>();
+	void OnTriggerEnter(Collider collision) {
+		if (collision.gameObject.tag == "PlayerCollider") {
+			DamageScript script = GameObject.FindGameObjectWithTag("Player").GetComponent<DamageScript>();
 			script.TakeDamage();
 		}
 	}
