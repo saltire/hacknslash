@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour {
 	public float maxY;
 	public GameObject player;
 	public GameObject nextLevel;
+	public List<GameObject> doors;
 
 	private List<GameObject> agents;
 	private int spawnCount;
@@ -20,7 +21,9 @@ public class EnemySpawner : MonoBehaviour {
 	// Use this for initialization
 	private void Start () {
 		agents = new List<GameObject>();
-		SpawnFromPool();
+		if (active) {
+			SpawnFromPool();
+		}
 		timeSinceLastSpawn = 0f;
 		spawnCount = 1;
 	}
@@ -32,11 +35,9 @@ public class EnemySpawner : MonoBehaviour {
 				Destroy(agent);
 			}
 
-			EnemySpawner esScript = nextLevel.GetComponent<EnemySpawner>();
-			esScript.SetActive();
-			player.transform.position = Vector3.zero;
-			nextLevel.transform.position = Vector3.zero;
-			Destroy(gameObject);
+			foreach(GameObject exit in doors) {
+				Destroy(exit);
+			}
 		}
 	}
 
@@ -55,7 +56,7 @@ public class EnemySpawner : MonoBehaviour {
 		}
 
 		if (newAgent == null) {
-			newAgent = (GameObject) GameObject.Instantiate(this.agent, new Vector3(Random.Range(minX, maxX), 1f, Random.Range(minY, maxY)), Quaternion.identity);
+			newAgent = (GameObject) GameObject.Instantiate(this.agent, new Vector3(Random.Range(minX, maxX), 0f, Random.Range(minY, maxY)), Quaternion.identity);
 		}
 		else {
 			Vector3 playerPos = player.transform.position;
@@ -75,7 +76,7 @@ public class EnemySpawner : MonoBehaviour {
 					invalid = false;
 				}
 			} while(invalid);
-			newAgent.transform.position = new Vector3(x, 1f, y);
+			newAgent.transform.position = new Vector3(x, 0f, y);
 		}
 
 		agents.Add(newAgent);
