@@ -86,7 +86,7 @@ NavMeshSettings:
     minRegionArea: 2
     cellSize: .166666672
     manualCellSize: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: d896c000ed5904ae593e21854c39404b, type: 2}
 --- !u!1 &22217922
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,6 +246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d0e9519de04406188cdf620ed9ab4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sweepAngle: 60
+  sweepTime: .5
 --- !u!1 &111038811
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +305,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!54 &150374142
 Rigidbody:
@@ -946,9 +948,10 @@ GameObject:
   - 114: {fileID: 1146673693}
   - 136: {fileID: 1146673697}
   - 33: {fileID: 1146673696}
+  - 114: {fileID: 1146673699}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -964,6 +967,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104097b95a081bb47ab85450c2ec892c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 10
+  rotateSpeed: 20
 --- !u!143 &1146673694
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1039,6 +1044,17 @@ Transform:
   - {fileID: 100699242}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &1146673699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1146673692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9d7e27991e24e9da35cd7d4ff3b912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1207561193
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,7 +1379,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &1489551186
 MeshRenderer:
