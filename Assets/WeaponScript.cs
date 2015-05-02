@@ -3,40 +3,54 @@ using System.Collections;
 
 public class WeaponScript : MonoBehaviour {
 
+	public float sweepAngle = 60f;
+	public float sweepTime = 0.5f;
+	
 	private bool attacking;
-	private float timeSinceAttack;
-	private Quaternion originalRotationValue;
-	private Vector3 originalPos;
+	private float angleMoved;
+
+	private Vector3 startPosition;
+	private Quaternion startRotation;
+
+	private Renderer r;
 
 	// Use this for initialization
 	void Start () {
-		Renderer r = gameObject.GetComponent<Renderer>();
+		r = gameObject.GetComponentsInChildren<Renderer>()[0];
 		r.enabled = false;
 		attacking = false;
-		timeSinceAttack = 0f;
-		originalRotationValue = transform.rotation;
-		originalPos = transform.localPosition;
+
+		startPosition = transform.position - transform.parent.position;
+		startRotation = Quaternion.FromToRotation (transform.parent.position, transform.position);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Renderer r = gameObject.GetComponent<Renderer>();
-		if (!attacking && (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.KeypadEnter))) {
+		if (!attacking && Input.GetAxis("Fire1") > 0) {
 			r.enabled = true;
 			attacking = true;
+
+			transform.position = startPosition + transform.parent.position;
+			transform.rotation = transform.parent.rotation * startRotation;
+			transform.RotateAround (transform.parent.position, Vector3.up, sweepAngle * -0.5f);
+			angleMoved = 0;
 		}
 
 		if (attacking) {
-			timeSinceAttack += Time.deltaTime;
-			transform.RotateAround(transform.parent.position, Vector3.up, 5);
-		}
+			float angle = sweepAngle * Time.deltaTime / sweepTime;
+			transform.RotateAround(transform.parent.position, Vector3.up, angle);
+			angleMoved += angle;
 
-		if (timeSinceAttack > 0.4f) {
-			attacking = false;
-			r.enabled = false;
-			timeSinceAttack = 0f;
-			transform.rotation = originalRotationValue;
-			transform.localPosition = originalPos;
+			if (angleMoved > sweepAngle) {
+				attacking = false;
+				r.enabled = false;
+			}
+		}
+	}
+
+	void OnTriggerEnter (Collider other) {
+		if (attacking && other.gameObject.name == "Enemy") {
+			Destroy (other.gameObject);
 		}
 	}
 }

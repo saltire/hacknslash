@@ -30,6 +30,6 @@ public class Agent : MonoBehaviour {
 		// }
 
 		// agent will move to target gameobject
-		agent.SetDestination(new Vector3(target.transform.position.x, 0f, target.transform.position.z));
+		agent.SetDestination(target.transform.position);
 	}
 }
