@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour {
-
+	public int maxSpawn = 50;
 	public GameObject agent;
+
+
 	private List<GameObject> agents;
+	private int spawnCount;
 	private float timeSinceLastSpawn;
 
 	// Use this for initialization
@@ -13,6 +16,7 @@ public class EnemySpawner : MonoBehaviour {
 		agents = new List<GameObject>();
 		agents.Add(agent);
 		timeSinceLastSpawn = 0f;
+		spawnCount = 1;
 	}
 
 	private void SpawnFromPool() {
@@ -41,9 +45,10 @@ public class EnemySpawner : MonoBehaviour {
 	// Update is called once per frame
 	private void Update () {
 		timeSinceLastSpawn += Time.deltaTime;
-		if (timeSinceLastSpawn > 2.0f) {
+		if (timeSinceLastSpawn > 0.5f && spawnCount < maxSpawn) {
 			SpawnFromPool();
 			timeSinceLastSpawn = 0f;
+			spawnCount++;
 		}
 	}
 }
