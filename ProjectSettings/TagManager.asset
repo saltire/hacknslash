@@ -8,6 +8,8 @@ TagManager:
   - PlayerCollider
   - Ground
   - Enemy
+  - Level
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

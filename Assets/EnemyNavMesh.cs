@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Agent : MonoBehaviour {
+public class EnemyNavMesh : MonoBehaviour {
 
 	private bool alive;
 	private NavMeshAgent agent;
