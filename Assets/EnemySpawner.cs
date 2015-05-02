@@ -67,5 +67,9 @@ public class EnemySpawner : MonoBehaviour {
 			timeSinceLastSpawn = 0f;
 			spawnCount++;
 		}
+
+		if (spawnCount >= maxSpawn) {
+			// GOTO NEXT LEVEL
+		}
 	}
 }
