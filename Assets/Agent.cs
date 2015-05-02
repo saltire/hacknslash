@@ -16,6 +16,7 @@ public class Agent : MonoBehaviour {
 	{
 		alive = true;
 		agent = GetComponent<NavMeshAgent>();
+		agent.speed = Random.Range(3.5f, 10f);
 	}
 
 	void FixedUpdate ()
