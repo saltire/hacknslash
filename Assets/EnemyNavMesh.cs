@@ -8,6 +8,8 @@ public class EnemyNavMesh : MonoBehaviour {
 
 	private GameObject[] players;
 	private GameObject target;
+	private int hp;
+	private float lastTimeDamaged;
 	
 
 	void Start ()
@@ -15,8 +17,9 @@ public class EnemyNavMesh : MonoBehaviour {
 		alive = true;
 		agent = GetComponent<NavMeshAgent>();
 		agent.speed = Random.Range(3.5f, 10f);
-
+		hp = Random.Range(1, 3);
 		players = GameObject.FindGameObjectsWithTag ("Player");
+		lastTimeDamaged = Time.time;
 	}
 
 	void Update ()
@@ -33,6 +36,17 @@ public class EnemyNavMesh : MonoBehaviour {
 			}
 
 			agent.SetDestination(new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z));
+		}
+	}
+
+	public void TakeDamage() {
+		if (Time.time - lastTimeDamaged > 0.25f) {
+			lastTimeDamaged = Time.time;
+			hp--;
+			if (hp == 0) {
+				alive = false;
+				Destroy(gameObject);
+			}
 		}
 	}
 

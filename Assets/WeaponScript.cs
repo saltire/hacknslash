@@ -68,7 +68,8 @@ public class WeaponScript : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other) {
 		if (attacking && other.gameObject.tag == "Enemy") {
-			Destroy (other.gameObject);
+			EnemyNavMesh script = other.gameObject.GetComponent<EnemyNavMesh>();
+			script.TakeDamage();
 		}
 	}
 }
