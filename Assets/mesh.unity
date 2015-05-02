@@ -124,7 +124,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 463528, guid: f91a8359a82026840a42bbcb301dbf2d, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 103046, guid: f91a8359a82026840a42bbcb301dbf2d, type: 2}
       propertyPath: m_Name
@@ -137,6 +137,10 @@ Prefab:
     - target: {fileID: 13636364, guid: f91a8359a82026840a42bbcb301dbf2d, type: 2}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13622292, guid: f91a8359a82026840a42bbcb301dbf2d, type: 2}
+      propertyPath: m_Height
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 13636364, guid: f91a8359a82026840a42bbcb301dbf2d, type: 2}
@@ -358,7 +362,7 @@ GameObject:
   - 114: {fileID: 209254662}
   m_Layer: 0
   m_Name: rhythm_bouncer
-  m_TagString: Untagged
+  m_TagString: Bouncer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

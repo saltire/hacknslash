@@ -6,6 +6,9 @@ public class WeaponScript : MonoBehaviour {
 	public int PlayerNumber;
 	public float sweepAngle = 60f;
 	public float sweepTime = 0.5f;
+
+	private float cacheSweepAngle;
+	private float cacheSweepTime;
 	
 	private bool attacking;
 	private float angleMoved;
@@ -23,6 +26,8 @@ public class WeaponScript : MonoBehaviour {
 
 		startPosition = transform.position - transform.parent.position;
 		startRotation = Quaternion.FromToRotation (transform.parent.position, transform.position);
+		cacheSweepAngle = sweepAngle;
+		cacheSweepTime = sweepTime;
 	}
 	
 	// Update is called once per frame
@@ -35,6 +40,16 @@ public class WeaponScript : MonoBehaviour {
 			transform.rotation = transform.parent.rotation * startRotation;
 			transform.RotateAround (transform.parent.position, Vector3.up, sweepAngle * -0.5f);
 			angleMoved = 0;
+
+			GameObject bouncer = GameObject.FindGameObjectWithTag("Bouncer");
+			
+			if (bouncer) {
+				Vector3 vec = bouncer.transform.localPosition;
+				if (vec.x > -1.5f && vec.x < 1.5f) {
+					sweepAngle = 360f;
+					sweepTime = 0.6f;
+				}
+			}
 		}
 
 		if (attacking) {
@@ -45,6 +60,8 @@ public class WeaponScript : MonoBehaviour {
 			if (angleMoved > sweepAngle) {
 				attacking = false;
 				r.enabled = false;
+				sweepAngle = cacheSweepAngle;
+				sweepTime = cacheSweepTime;
 			}
 		}
 	}
