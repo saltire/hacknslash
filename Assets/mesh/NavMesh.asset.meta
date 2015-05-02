@@ -1,13 +1,8 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: d896c000ed5904ae593e21854c39404b
-timeCreated: 1430545201
-=======
-guid: e9b96c1ce9a5f404393b86084f29084f
-timeCreated: 1430573170
->>>>>>> Add new room, player 2, ramps
+timeCreated: 1430578625
 licenseType: Free
 NativeFormatImporter:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
