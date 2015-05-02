@@ -8,10 +8,6 @@ public class Agent : MonoBehaviour {
 	private bool alive;
 	private NavMeshAgent agent;
 
-	public bool IsAlive() {
-		return alive;
-	}
-
 	void Start ()
 	{
 		alive = true;
@@ -27,7 +23,11 @@ public class Agent : MonoBehaviour {
 		}
 	}
 
-	public void SetAlive() {
-		alive = true;
+	public bool IsAlive() {
+		return alive;
+	}
+
+	public void SetAlive(bool a) {
+		alive = a;
 	}
 }

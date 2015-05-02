@@ -5,6 +5,11 @@ using System.Collections.Generic;
 public class EnemySpawner : MonoBehaviour {
 	public int maxSpawn = 50;
 	public GameObject agent;
+	public bool active;
+	public float minX;
+	public float maxX;
+	public float minY;
+	public float maxY;
 	public GameObject player;
 
 	private List<GameObject> agents;
@@ -30,14 +35,14 @@ public class EnemySpawner : MonoBehaviour {
 		}
 
 		if (newAgent == null) {
-			newAgent = (GameObject) GameObject.Instantiate(this.agent, new Vector3(Random.Range(-4, 4), 0f, Random.Range(-4, 4)), Quaternion.identity);
+			newAgent = (GameObject) GameObject.Instantiate(this.agent, new Vector3(Random.Range(minX, maxX), 1f, Random.Range(minY, maxY)), Quaternion.identity);
 		}
 		else {
 			Vector3 playerPos = player.transform.position;
 			float x;
 			bool invalid = true;
 			do {
-				x = Random.Range(-4, 4);
+				x = Random.Range(minX, maxX);
 				if (x != playerPos.x) {
 					invalid = false;
 				}
@@ -45,31 +50,33 @@ public class EnemySpawner : MonoBehaviour {
 			float y;
 			invalid = true;
 			do {
-				y = Random.Range(-4, 4);
+				y = Random.Range(minY, maxY);
 				if (y != playerPos.x) {
 					invalid = false;
 				}
 			} while(invalid);
-			newAgent.transform.position.Set(x, 0f, y);
+			newAgent.transform.position.Set(x, 1f, y);
 		}
 
 		script = newAgent.GetComponent<Agent>();
 		if (script) {
-			script.SetAlive();
+			script.SetAlive(true);
 		}
 	}
 
 	// Update is called once per frame
 	private void Update () {
-		timeSinceLastSpawn += Time.deltaTime;
-		if (timeSinceLastSpawn > 0.5f && spawnCount < maxSpawn) {
-			SpawnFromPool();
-			timeSinceLastSpawn = 0f;
-			spawnCount++;
-		}
+		if (active) {
+			timeSinceLastSpawn += Time.deltaTime;
+			if (timeSinceLastSpawn > 0.5f && spawnCount < maxSpawn) {
+				SpawnFromPool();
+				timeSinceLastSpawn = 0f;
+				spawnCount++;
+			}
 
-		if (spawnCount >= maxSpawn) {
-			// GOTO NEXT LEVEL
+			if (spawnCount >= maxSpawn) {
+				active = false;
+			}
 		}
 	}
 }
