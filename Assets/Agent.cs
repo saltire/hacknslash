@@ -3,22 +3,35 @@ using System.Collections;
 
 public class Agent : MonoBehaviour {
 
-	public GameObject target;
-
 	private bool alive;
 	private NavMeshAgent agent;
+
+	private GameObject[] players;
+	private GameObject target;
+	
 
 	void Start ()
 	{
 		alive = true;
 		agent = GetComponent<NavMeshAgent>();
 		agent.speed = Random.Range(3.5f, 10f);
+
+		players = GameObject.FindGameObjectsWithTag ("Player");
 	}
 
-	void FixedUpdate ()
+	void Update ()
 	{
 		if (alive) {
-			// agent will move to target gameobject
+			// target the closest player
+			float shortestDistance = 1000f;
+			foreach (GameObject player in players) {
+				float playerDistance = Vector3.Distance(transform.position, player.transform.position);
+				if (playerDistance < shortestDistance) {
+					shortestDistance = playerDistance;
+					target = player;
+				}
+			}
+
 			agent.SetDestination(new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z));
 		}
 	}
