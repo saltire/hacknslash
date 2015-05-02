@@ -50,7 +50,7 @@ public class WeaponScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
-		if (attacking && other.gameObject.name == "Enemy") {
+		if (attacking && other.gameObject.tag == "Enemy") {
 			Destroy (other.gameObject);
 		}
 	}

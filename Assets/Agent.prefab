@@ -15,7 +15,7 @@ GameObject:
   - 65: {fileID: 6567276}
   m_Layer: 0
   m_Name: Agent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,7 +86,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b892ce09ddfe28b4ab689c27ca34a2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!195 &19514596
 NavMeshAgent:
   m_ObjectHideFlags: 1
