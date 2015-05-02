@@ -10,10 +10,15 @@ public class DamageScript : MonoBehaviour {
 		damageTimer = 0f;
 	}
 
+	public int GetHealth() {
+		return health;
+	}
+
 	public void TakeDamage() {
 		if (damageTimer > 0.5f) {
 			damageTimer = 0f;
 			health--;
+			health = Mathf.Clamp(health, 0, 6);
 
 			if (health == 0) {
 				GetComponent<SimpleMove>().SetDead();

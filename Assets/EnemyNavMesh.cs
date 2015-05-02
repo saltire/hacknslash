@@ -45,12 +45,13 @@ public class EnemyNavMesh : MonoBehaviour {
 		}
 	}
 
-	public void TakeDamage() {
+	public void TakeDamage(int PlayerNumber) {
 		if (Time.time - lastTimeDamaged > 0.25f) {
 			lastTimeDamaged = Time.time;
 			hp--;
 			if (hp == 0) {
 				alive = false;
+				GameObject.FindGameObjectWithTag("Levels").GetComponent<LevelManager>().IncrementKillCountFor(PlayerNumber);
 				Destroy(gameObject);
 			}
 		}

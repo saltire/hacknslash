@@ -4,9 +4,36 @@ using System.Collections;
 public class LevelManager : MonoBehaviour {
 	public GameObject level;
 	private bool fadeStarted;
+	private int playerOneKC;
+	private int playerTwoKC;
 	// Use this for initialization
 	void Start () {
 		fadeStarted = false;
+	}
+
+	public void IncrementKillCountFor(int pn) {
+		if (pn == 1) {
+			playerOneKC++;
+		}
+		else if (pn == 2) {
+			playerTwoKC++;
+		}
+	}
+
+	void OnGUI() {
+		GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+		int i = 0;
+		foreach(GameObject player in players) {
+			if (i == 0) {
+				GUI.Label(new Rect(10, 10, 100, 20), "Player 1 HP: " + player.GetComponent<DamageScript>().GetHealth());
+			}
+			else {
+				GUI.Label(new Rect(300, 10, 100, 20), "Player 2 HP: " + player.GetComponent<DamageScript>().GetHealth());
+			}
+			i++;
+		}
+		GUI.Label(new Rect(10, 33, 100, 20), "Kill Count: " + playerOneKC);
+		GUI.Label(new Rect(300, 33, 100, 20), "Kill Count: " + playerTwoKC);
 	}
 	
 	// Update is called once per frame
