@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class EnemySpawner : MonoBehaviour {
 	public int maxSpawn = 50;
 	public GameObject agent;
-
+	public GameObject player;
 
 	private List<GameObject> agents;
 	private int spawnCount;
@@ -33,7 +33,24 @@ public class EnemySpawner : MonoBehaviour {
 			newAgent = (GameObject) GameObject.Instantiate(this.agent, new Vector3(Random.Range(-4, 4), 0f, Random.Range(-4, 4)), Quaternion.identity);
 		}
 		else {
-			newAgent.transform.position.Set(Random.Range(-4, 4), 0f, Random.Range(-4, 4));
+			Vector3 playerPos = player.transform.position;
+			float x;
+			bool invalid = true;
+			do {
+				x = Random.Range(-4, 4);
+				if (x != playerPos.x) {
+					invalid = false;
+				}
+			} while(invalid);
+			float y;
+			invalid = true;
+			do {
+				y = Random.Range(-4, 4);
+				if (y != playerPos.x) {
+					invalid = false;
+				}
+			} while(invalid);
+			newAgent.transform.position.Set(x, 0f, y);
 		}
 
 		script = newAgent.GetComponent<Agent>();
