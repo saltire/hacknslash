@@ -14,9 +14,9 @@ public class DamageScript : MonoBehaviour {
 		if (damageTimer > 0.5f) {
 			damageTimer = 0f;
 			health--;
+
 			if (health == 0) {
-				FadeToBlack script = GameObject.FindGameObjectWithTag("FadeObject").GetComponent<FadeToBlack>();
-				script.StartFade();
+				GetComponent<SimpleMove>().SetDead();
 			}
 		}
 	}

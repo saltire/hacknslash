@@ -5,12 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - FadeObject
-  - PlayerCollider
+  - DamageCollider
   - Ground
   - Enemy
   - Level
   - SpawnPoint
   - Bouncer
+  - Levels
   layers:
   - Default
   - TransparentFX

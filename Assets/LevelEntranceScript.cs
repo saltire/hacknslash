@@ -7,6 +7,8 @@ public class LevelEntranceScript : MonoBehaviour {
 	private int playerCount;
 	private int playerTotal;
 	private bool waiting;
+
+	public GameObject targetLevel;
 	
 	void Start () {
 		mainCamera = GameObject.FindWithTag ("MainCamera");
@@ -33,6 +35,9 @@ public class LevelEntranceScript : MonoBehaviour {
 				foreach (GameObject spawnPoint in GameObject.FindGameObjectsWithTag("SpawnPoint")) {
 					spawnPoint.GetComponent<EnemySpawnPoint>().isActive = (spawnPoint.transform.parent == transform.parent);
 				}
+
+				LevelManager lm = GameObject.FindGameObjectWithTag("Levels").GetComponent<LevelManager>();
+				lm.level = targetLevel;
 			}
 		}
 	}

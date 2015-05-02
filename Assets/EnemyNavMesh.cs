@@ -27,15 +27,21 @@ public class EnemyNavMesh : MonoBehaviour {
 		if (alive) {
 			// target the closest player
 			float shortestDistance = 1000f;
+			target = null;
 			foreach (GameObject player in players) {
-				float playerDistance = Vector3.Distance(transform.position, player.transform.position);
-				if (playerDistance < shortestDistance) {
-					shortestDistance = playerDistance;
-					target = player;
+				if (!player.GetComponent<SimpleMove>().IsDead()) {
+
+					float playerDistance = Vector3.Distance(transform.position, player.transform.position);
+					if (playerDistance < shortestDistance) {
+						shortestDistance = playerDistance;
+						target = player;
+					}
 				}
 			}
 
-			agent.SetDestination(new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z));
+			if (target) {
+				agent.SetDestination(new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z));
+			}
 		}
 	}
 
@@ -55,8 +61,8 @@ public class EnemyNavMesh : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collision) {
-		if (collision.gameObject.tag == "PlayerCollider") {
-			DamageScript script = GameObject.FindGameObjectWithTag("Player").GetComponent<DamageScript>();
+		if (collision.gameObject.tag == "DamageCollider") {
+			DamageScript script = collision.gameObject.transform.parent.gameObject.GetComponent<DamageScript>();
 			script.TakeDamage();
 		}
 	}
