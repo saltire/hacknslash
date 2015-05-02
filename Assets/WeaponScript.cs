@@ -3,6 +3,7 @@ using System.Collections;
 
 public class WeaponScript : MonoBehaviour {
 
+	public int PlayerNumber;
 	public float sweepAngle = 60f;
 	public float sweepTime = 0.5f;
 	
@@ -26,7 +27,7 @@ public class WeaponScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!attacking && Input.GetAxis("Fire1") > 0) {
+		if (!attacking && Input.GetAxis("Attack" + PlayerNumber) > 0) {
 			r.enabled = true;
 			attacking = true;
 

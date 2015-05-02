@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SimpleMove : MonoBehaviour {
 
+	public int PlayerNumber;
 	public float moveSpeed = 10f;
 	public float rotateSpeed = 20f;
 	
@@ -15,8 +16,8 @@ public class SimpleMove : MonoBehaviour {
 
 	void Update ()
 	{
-		float h = Input.GetAxis("Horizontal");
-		float v = Input.GetAxis("Vertical");
+		float h = Input.GetAxis("Horizontal" + PlayerNumber);
+		float v = Input.GetAxis("Vertical" + PlayerNumber);
 
 		Vector3 moveDirection = new Vector3 (h * moveSpeed, -100f, v * moveSpeed);
 		player.Move (moveDirection * Time.deltaTime);
