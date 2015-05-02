@@ -13,7 +13,6 @@ public class DamageScript : MonoBehaviour {
 	public void TakeDamage() {
 		if (damageTimer > 0.5f) {
 			damageTimer = 0f;
-			print ("HP Loss");
 			health--;
 		}
 	}
