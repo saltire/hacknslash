@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 484936cc919813c46af1fb0ca801fdc8
-timeCreated: 1430267914
+guid: 96e3c0e14ee1b24479dbb9911c3c943d
+timeCreated: 1430576543
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -10,7 +10,6 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Ramp
-    6400000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -32,7 +31,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -47,8 +46,8 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    splitTangentsAcrossUV: 0
-    normalImportMode: 1
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
     tangentImportMode: 1
   importAnimation: 1
   copyAvatar: 0
