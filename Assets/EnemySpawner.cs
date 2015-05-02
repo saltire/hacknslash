@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour {
 	public float minY;
 	public float maxY;
 	public GameObject player;
+	public GameObject nextLevel;
 
 	private List<GameObject> agents;
 	private int spawnCount;
@@ -19,9 +20,28 @@ public class EnemySpawner : MonoBehaviour {
 	// Use this for initialization
 	private void Start () {
 		agents = new List<GameObject>();
-		agents.Add(agent);
+		SpawnFromPool();
 		timeSinceLastSpawn = 0f;
 		spawnCount = 1;
+	}
+
+	private void GotoNextLevel() {
+		if (nextLevel) {
+			active = false;
+			foreach(GameObject agent in agents) {
+				Destroy(agent);
+			}
+
+			EnemySpawner esScript = nextLevel.GetComponent<EnemySpawner>();
+			esScript.SetActive();
+			player.transform.position = Vector3.zero;
+			nextLevel.transform.position = Vector3.zero;
+			Destroy(gameObject);
+		}
+	}
+
+	public void SetActive() {
+		active = true;
 	}
 
 	private void SpawnFromPool() {
@@ -55,8 +75,10 @@ public class EnemySpawner : MonoBehaviour {
 					invalid = false;
 				}
 			} while(invalid);
-			newAgent.transform.position.Set(x, 1f, y);
+			newAgent.transform.position = new Vector3(x, 1f, y);
 		}
+
+		agents.Add(newAgent);
 
 		script = newAgent.GetComponent<Agent>();
 		if (script) {
@@ -76,6 +98,11 @@ public class EnemySpawner : MonoBehaviour {
 
 			if (spawnCount >= maxSpawn) {
 				active = false;
+			}
+		}
+		else {
+			if (agents.Count == 0) {
+				GotoNextLevel();
 			}
 		}
 	}
