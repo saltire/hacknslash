@@ -15,10 +15,6 @@ public class FadeToBlack : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		fading = false;
-		color = Color.white;
-		color.a = 0f;
-		SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-		renderer.color = color;
 	}
 	
 	// Update is called once per frame

@@ -70,7 +70,7 @@ public class LevelEntranceScript : MonoBehaviour {
 
 	void Update () {
 		// move camera
-		if (!waiting && cameraMoveElapsed < cameraMoveTime) {
+		if (!waiting && mainCamera.transform.position != cameraPoint.position) {
 			mainCamera.transform.position = Vector3.Lerp (cameraOriginalPosition, cameraPoint.position, cameraMoveElapsed / cameraMoveTime);
 			cameraMoveElapsed += Time.deltaTime;
 		}
