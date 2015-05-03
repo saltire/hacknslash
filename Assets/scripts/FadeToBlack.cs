@@ -8,7 +8,6 @@ public class FadeToBlack : MonoBehaviour {
 	private float fadeTime;
 
 	public void StartFade() {
-		this.transform.position = new Vector3(0, this.transform.position.y, 94);
 		fading = true;
 		fadeTime = 0f;
 	}

@@ -45,6 +45,11 @@ public class LevelEntranceScript : MonoBehaviour {
 				}
 
 				GameObject.FindGameObjectWithTag("Levels").GetComponent<LevelManager>().currentLevel = targetLevel;
+
+				SwitchMusic music = gameObject.GetComponent<SwitchMusic>();
+				if (music) {
+					music.switchMusic();
+				}
 			}
 		}
 	}
