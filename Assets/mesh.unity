@@ -135,6 +135,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300020, guid: 5ed1ef907675a0c40bc744cc06f1d261,
         type: 3}
+    - target: {fileID: 11432624, guid: f91a8359a82026840a42bbcb301dbf2d, type: 2}
+      propertyPath: sweepTime
+      value: .150000006
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f91a8359a82026840a42bbcb301dbf2d, type: 2}
   m_IsPrefabParent: 0
@@ -853,7 +857,8 @@ Prefab:
     - target: {fileID: 9599628, guid: f91a8359a82026840a42bbcb301dbf2d, type: 2}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: e2512b0eb49dc6c479c6f4d7e6b96980, type: 2}
+      objectReference: {fileID: 22100000, guid: 39863f8258e61b648a202c80201a24c6,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}

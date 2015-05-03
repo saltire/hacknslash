@@ -10,6 +10,7 @@ public class SimpleMove : MonoBehaviour {
 	private CharacterController player;
 	private bool dead;
 	private Vector3 lastPosition;
+	private Animator anim;
 
 	// this is used by the weapon and the player sprite, but not by the player object itself
 	private Quaternion lookRotation;
@@ -20,6 +21,7 @@ public class SimpleMove : MonoBehaviour {
 		lookRotation = player.transform.rotation;
 		dead = false;
 		lastPosition = transform.position;
+		anim = transform.GetComponentInChildren<Animator>();
 	}
 
 
@@ -29,10 +31,12 @@ public class SimpleMove : MonoBehaviour {
 
 	public void SetAlive() {
 		dead = false;
+		anim.SetBool("dead", false);
 	}
 
 	public void SetDead() {
 		dead = true;
+		anim.SetBool("dead", true);
 	}
 
 	public Quaternion getRotation() {
@@ -52,7 +56,6 @@ public class SimpleMove : MonoBehaviour {
 				lookRotation = Quaternion.LookRotation (new Vector3(h, 0, v));
 
 				// set variables for animator controller
-				Animator anim = transform.GetComponentInChildren<Animator>();
 				anim.SetFloat("direction", lookRotation.eulerAngles.y);
 				//anim.SetFloat("direction", Mathf.Atan2(rotation2d.x, rotation2d.z) * Mathf.Rad2Deg);
 				anim.SetFloat("speed", Vector3.Distance(transform.position, lastPosition) / Time.deltaTime);

@@ -20,8 +20,10 @@ public class WeaponScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		// this renderer is only for the stand-in asset
 		r = gameObject.GetComponentsInChildren<Renderer>()[0];
 		r.enabled = false;
+
 		attacking = false;
 
 		startPosition = transform.position - transform.parent.position;
@@ -37,18 +39,23 @@ public class WeaponScript : MonoBehaviour {
 			r.enabled = true;
 			attacking = true;
 
+			// place weapon collider at start of swing
 			transform.position = startPosition + transform.parent.position;
 			transform.rotation = transform.parent.gameObject.GetComponent<SimpleMove>().getRotation() * startRotation;
 			transform.RotateAround (transform.parent.position, Vector3.up, sweepAngle * -0.5f);
 			angleMoved = 0;
 
+			// trigger animation
+			transform.parent.GetComponentInChildren<Animator>().SetBool("attacking", true);
+
+			// use a power attack if bouncer is in the right position
 			GameObject bouncer = GameObject.FindGameObjectWithTag("Bouncer");
-			
 			if (bouncer) {
 				Vector3 vec = bouncer.transform.localPosition;
 				if (vec.x > -1.5f && vec.x < 1.5f) {
 					sweepAngle = 360f;
 					sweepTime = 0.3f;
+					transform.parent.GetComponentInChildren<Animator>().SetBool("spinning", true);
 				}
 			}
 		}
@@ -59,8 +66,13 @@ public class WeaponScript : MonoBehaviour {
 			angleMoved += angle;
 
 			if (angleMoved > sweepAngle) {
+				// end attack
 				attacking = false;
+				transform.parent.GetComponentInChildren<Animator>().SetBool("attacking", false);
+				transform.parent.GetComponentInChildren<Animator>().SetBool("spinning", false);
+
 				r.enabled = false;
+
 				sweepAngle = cacheSweepAngle;
 				sweepTime = cacheSweepTime;
 			}
