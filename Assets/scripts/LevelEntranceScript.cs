@@ -10,6 +10,7 @@ public class LevelEntranceScript : MonoBehaviour {
 	private int playerCount;
 
 	private bool waiting;
+	private bool finished;
 	private Vector3 cameraOriginalPosition;
 	private float cameraMoveElapsed;
 	
@@ -18,6 +19,7 @@ public class LevelEntranceScript : MonoBehaviour {
 		cameraPoint = transform.parent.Find ("Camera");
 
 		waiting = true;
+		finished = false;
 		playerCount = 0;
 
 		cameraMoveElapsed = 0;
@@ -70,9 +72,13 @@ public class LevelEntranceScript : MonoBehaviour {
 
 	void Update () {
 		// move camera
-		if (!waiting && mainCamera.transform.position != cameraPoint.position) {
+		if (!waiting && !finished && mainCamera.transform.position != cameraPoint.position) {
 			mainCamera.transform.position = Vector3.Lerp (cameraOriginalPosition, cameraPoint.position, cameraMoveElapsed / cameraMoveTime);
 			cameraMoveElapsed += Time.deltaTime;
+
+			if (mainCamera.transform.position == cameraPoint.position) {
+				finished = true;
+			}
 		}
 	}
 }
