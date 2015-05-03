@@ -22,7 +22,9 @@ public class DamageScript : MonoBehaviour {
 		if (damageTimer > 0.5f) {
 			damageTimer = 0f;
 			health--;
-			health = Mathf.Clamp(health, 0, 6);
+			if (health < 0) {
+				health = 0;
+			}
 
 			if (health == 0) {
 				GetComponent<SimpleMove>().SetDead();
