@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 5ed1ef907675a0c40bc744cc06f1d261
-timeCreated: 1430627318
+guid: e8d264e61e7d34c4285535f633ce4567
+timeCreated: 1430668042
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -16,22 +16,19 @@ TextureImporter:
     21300018: up-walk-left
     21300020: up-stand
     21300022: up-walk-right
-    21300024: down-sweep-1
-    21300026: down-sweep-2
-    21300028: down-sweep-3
-    21300030: up-sweep-1
-    21300032: up-sweep-2
-    21300034: up-sweep-3
-    21300036: right-sweep-1
-    21300038: right-sweep-2
-    21300040: right-sweep-3
-    21300042: left-sweep-1
-    21300044: left-sweep-2
-    21300046: left-sweep-3
+    21300024: enemy sheet_12
+    21300026: enemy sheet_13
+    21300028: enemy sheet_14
+    21300030: enemy sheet_15
+    21300032: enemy sheet_16
+    21300034: enemy sheet_17
+    21300036: enemy sheet_18
+    21300038: enemy sheet_19
+    21300040: enemy sheet_20
+    21300042: enemy sheet_21
+    21300044: enemy sheet_22
+    21300046: enemy sheet_23
     21300048: dead
-    21300050: player-sheet_25
-    21300052: player-sheet_26
-    21300054: player-sheet_27
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -110,7 +107,7 @@ TextureImporter:
     - name: left-walk-left
       rect:
         serializedVersion: 2
-        x: 419
+        x: 420
         y: 840
         width: 140
         height: 140
@@ -131,7 +128,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 140
-        y: 699
+        y: 700
         width: 140
         height: 140
       alignment: 0
@@ -170,8 +167,8 @@ TextureImporter:
     - name: up-walk-left
       rect:
         serializedVersion: 2
-        x: 140
-        y: 560
+        x: 139
+        y: 559
         width: 140
         height: 140
       alignment: 0
@@ -197,17 +194,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: down-sweep-1
+    - name: enemy sheet_12
       rect:
         serializedVersion: 2
         x: 0
-        y: 420
+        y: 421
         width: 140
         height: 140
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: down-sweep-2
+    - name: enemy sheet_13
       rect:
         serializedVersion: 2
         x: 140
@@ -217,7 +214,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: down-sweep-3
+    - name: enemy sheet_14
       rect:
         serializedVersion: 2
         x: 280
@@ -227,7 +224,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: up-sweep-1
+    - name: enemy sheet_15
       rect:
         serializedVersion: 2
         x: 420
@@ -237,7 +234,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: up-sweep-2
+    - name: enemy sheet_16
       rect:
         serializedVersion: 2
         x: 0
@@ -247,7 +244,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: up-sweep-3
+    - name: enemy sheet_17
       rect:
         serializedVersion: 2
         x: 140
@@ -257,7 +254,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: right-sweep-1
+    - name: enemy sheet_18
       rect:
         serializedVersion: 2
         x: 280
@@ -267,7 +264,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: right-sweep-2
+    - name: enemy sheet_19
       rect:
         serializedVersion: 2
         x: 420
@@ -277,7 +274,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: right-sweep-3
+    - name: enemy sheet_20
       rect:
         serializedVersion: 2
         x: 0
@@ -287,7 +284,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: left-sweep-1
+    - name: enemy sheet_21
       rect:
         serializedVersion: 2
         x: 140
@@ -297,7 +294,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: left-sweep-2
+    - name: enemy sheet_22
       rect:
         serializedVersion: 2
         x: 280
@@ -307,7 +304,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: left-sweep-3
+    - name: enemy sheet_23
       rect:
         serializedVersion: 2
         x: 420
@@ -321,36 +318,6 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 140
-        height: 140
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player-sheet_25
-      rect:
-        serializedVersion: 2
-        x: 140
-        y: 0
-        width: 140
-        height: 140
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player-sheet_26
-      rect:
-        serializedVersion: 2
-        x: 280
-        y: 0
-        width: 140
-        height: 140
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player-sheet_27
-      rect:
-        serializedVersion: 2
-        x: 420
         y: 0
         width: 140
         height: 140

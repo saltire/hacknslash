@@ -57,7 +57,6 @@ public class SimpleMove : MonoBehaviour {
 
 				// set variables for animator controller
 				anim.SetFloat("direction", lookRotation.eulerAngles.y);
-				//anim.SetFloat("direction", Mathf.Atan2(rotation2d.x, rotation2d.z) * Mathf.Rad2Deg);
 				anim.SetFloat("speed", Vector3.Distance(transform.position, lastPosition) / Time.deltaTime);
 			}
 
