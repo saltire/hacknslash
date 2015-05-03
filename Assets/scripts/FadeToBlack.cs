@@ -31,7 +31,7 @@ public class FadeToBlack : MonoBehaviour {
 			}
 			else {
 				if (Input.GetAxis("Submit") > 0) {
-					Application.LoadLevel(0);
+					Application.LoadLevel(1);
 				}
 			}
 		}
