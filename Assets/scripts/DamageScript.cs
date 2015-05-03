@@ -2,9 +2,11 @@
 using System.Collections;
 
 public class DamageScript : MonoBehaviour {
+	public AudioClip hitSound;
+
 	private int health;
 	private float damageTimer;
-	// Use this for initialization
+
 	void Start () {
 		ResetHP();
 		damageTimer = 0f;
@@ -22,6 +24,7 @@ public class DamageScript : MonoBehaviour {
 		if (damageTimer > 0.5f) {
 			damageTimer = 0f;
 			health--;
+			AudioSource.PlayClipAtPoint(hitSound, transform.position);
 			if (health < 0) {
 				health = 0;
 			}

@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class EnemyNavMesh : MonoBehaviour {
+	public AudioClip deathSound;
 
 	private bool alive;
 	private NavMeshAgent agent;
@@ -66,6 +67,7 @@ public class EnemyNavMesh : MonoBehaviour {
 			hp--;
 			if (hp == 0) {
 				alive = false;
+				AudioSource.PlayClipAtPoint(deathSound, transform.position);
 				GameObject.FindGameObjectWithTag("Levels").GetComponent<LevelManager>().IncrementKillCountFor(PlayerNumber);
 				Destroy(gameObject);
 			}

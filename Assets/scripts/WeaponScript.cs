@@ -7,6 +7,8 @@ public class WeaponScript : MonoBehaviour {
 	public float sweepAngle = 60f;
 	public float sweepTime = 0.5f;
 
+	public AudioClip powerSound;
+
 	private float cacheSweepAngle;
 	private float cacheSweepTime;
 	
@@ -56,6 +58,7 @@ public class WeaponScript : MonoBehaviour {
 					sweepAngle = 360f;
 					sweepTime = 0.3f;
 					transform.parent.GetComponentInChildren<Animator>().SetBool("spinning", true);
+					AudioSource.PlayClipAtPoint(powerSound, transform.position);
 				}
 			}
 		}

@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b892ce09ddfe28b4ab689c27ca34a2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 6a2eb3c00c552474aa808b7e7d983b9f, type: 3}
 --- !u!195 &19514596
 NavMeshAgent:
   m_ObjectHideFlags: 1

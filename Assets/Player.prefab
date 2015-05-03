@@ -13,7 +13,6 @@ GameObject:
   - 114: {fileID: 11490636}
   - 33: {fileID: 3342226}
   - 114: {fileID: 11491178}
-  - 114: {fileID: 11473306}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -277,17 +276,7 @@ MonoBehaviour:
   PlayerNumber: 1
   sweepAngle: 120
   sweepTime: .150000006
---- !u!114 &11473306
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a9d7e27991e24e9da35cd7d4ff3b912, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  powerSound: {fileID: 8300000, guid: 3f749dd7e0f1f7a429a556dc52ce6150, type: 3}
 --- !u!114 &11490636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -313,6 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a9d7e27991e24e9da35cd7d4ff3b912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSound: {fileID: 8300000, guid: aa5934a29b7735940a94633e1d08f07a, type: 3}
 --- !u!136 &13622292
 CapsuleCollider:
   m_ObjectHideFlags: 1
