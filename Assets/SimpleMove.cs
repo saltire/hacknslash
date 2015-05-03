@@ -21,6 +21,10 @@ public class SimpleMove : MonoBehaviour {
 		return dead;
 	}
 
+	public void SetAlive() {
+		dead = false;
+	}
+
 	public void SetDead() {
 		dead = true;
 	}

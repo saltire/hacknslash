@@ -15,6 +15,10 @@ public class EnemySpawnPoint : MonoBehaviour {
 	void Start () {
 		timeSinceSpawn = 0;
 	}
+
+	public bool ReachedLimit() {
+		return spawnCount >= spawnLimit;
+	}
 	
 	void Update () {
 		if (isActive) {
@@ -24,7 +28,7 @@ public class EnemySpawnPoint : MonoBehaviour {
 				timeSinceSpawn = 0;
 				spawnCount++;
 			}
-			if (spawnCount >= spawnLimit) {
+			if (ReachedLimit()) {
 				isActive = false;
 			}
 		}

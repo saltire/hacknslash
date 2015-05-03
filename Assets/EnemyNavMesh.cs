@@ -17,7 +17,7 @@ public class EnemyNavMesh : MonoBehaviour {
 		alive = true;
 		agent = GetComponent<NavMeshAgent>();
 		agent.speed = Random.Range(3.5f, 10f);
-		hp = Random.Range(1, 3);
+		hp = 1;
 		players = GameObject.FindGameObjectsWithTag ("Player");
 		lastTimeDamaged = Time.time;
 	}

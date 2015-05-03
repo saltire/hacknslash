@@ -3,12 +3,11 @@ using System.Collections;
 
 public class LevelEntranceScript : MonoBehaviour {
 	private GameObject mainCamera;
+	public GameObject targetLevel;
 	private Transform cameraPoint;
 	private int playerCount;
 	private int playerTotal;
 	private bool waiting;
-
-	public GameObject targetLevel;
 	
 	void Start () {
 		mainCamera = GameObject.FindWithTag ("MainCamera");
@@ -36,8 +35,7 @@ public class LevelEntranceScript : MonoBehaviour {
 					spawnPoint.GetComponent<EnemySpawnPoint>().isActive = (spawnPoint.transform.parent == transform.parent);
 				}
 
-				LevelManager lm = GameObject.FindGameObjectWithTag("Levels").GetComponent<LevelManager>();
-				lm.level = targetLevel;
+				GameObject.FindGameObjectWithTag("Levels").GetComponent<LevelManager>().currentLevel = targetLevel;
 			}
 		}
 	}

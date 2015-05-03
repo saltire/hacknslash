@@ -6,12 +6,16 @@ public class DamageScript : MonoBehaviour {
 	private float damageTimer;
 	// Use this for initialization
 	void Start () {
-		health = 5;
+		ResetHP();
 		damageTimer = 0f;
 	}
 
 	public int GetHealth() {
 		return health;
+	}
+
+	public void ResetHP() {
+		health = 10;
 	}
 
 	public void TakeDamage() {

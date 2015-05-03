@@ -32,7 +32,8 @@ public class WeaponScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!attacking && Input.GetAxis("Attack" + PlayerNumber) > 0) {
+		SimpleMove sm = transform.parent.gameObject.GetComponent<SimpleMove>();
+		if (!sm.IsDead() && !attacking && Input.GetAxis("Attack" + PlayerNumber) > 0) {
 			r.enabled = true;
 			attacking = true;
 

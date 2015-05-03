@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class LevelManager : MonoBehaviour {
-	public GameObject level;
+	public GameObject currentLevel;
+
 	private bool fadeStarted;
 	private int playerOneKC;
 	private int playerTwoKC;
@@ -24,10 +25,10 @@ public class LevelManager : MonoBehaviour {
 		GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 		int i = 0;
 		foreach(GameObject player in players) {
-			if (i == 0) {
+			if (player.name == "Player 1") {
 				GUI.Label(new Rect(10, 10, 100, 20), "Player 1 HP: " + player.GetComponent<DamageScript>().GetHealth());
 			}
-			else {
+			else if (player.name == "Player 2") {
 				GUI.Label(new Rect(300, 10, 100, 20), "Player 2 HP: " + player.GetComponent<DamageScript>().GetHealth());
 			}
 			i++;
@@ -51,6 +52,19 @@ public class LevelManager : MonoBehaviour {
 			if (allDead) {
 				fadeStarted = true;
 				GameObject.FindGameObjectWithTag("FadeObject").GetComponent<FadeToBlack>().StartFade();
+			}
+			else {
+				foreach (GameObject spawnPoint in GameObject.FindGameObjectsWithTag("SpawnPoint")) {
+					if (spawnPoint.transform.parent == currentLevel.transform) {
+						EnemySpawnPoint esp = spawnPoint.GetComponent<EnemySpawnPoint>();
+						if (esp.ReachedLimit() && GameObject.FindGameObjectsWithTag("Enemy").Length == 0) {
+							foreach(GameObject player in players) {
+								player.GetComponent<SimpleMove>().SetAlive();
+								player.GetComponent<DamageScript>().ResetHP();
+							}
+						}
+					}
+				}
 			}
 		}
 	}
