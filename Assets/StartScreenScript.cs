@@ -11,7 +11,7 @@ public class StartScreenScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey(KeyCode.KeypadEnter) || Input.GetKey(KeyCode.Space)) {
-			Application.LoadLevel(0);
+			GameObject.FindGameObjectWithTag("FadeObject").GetComponent<TransitionScript>().StartFade();
 		}
 	}
 }
