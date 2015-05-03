@@ -38,7 +38,7 @@ public class WeaponScript : MonoBehaviour {
 			attacking = true;
 
 			transform.position = startPosition + transform.parent.position;
-			transform.rotation = transform.parent.rotation * startRotation;
+			transform.rotation = transform.parent.gameObject.GetComponent<SimpleMove>().getRotation() * startRotation;
 			transform.RotateAround (transform.parent.position, Vector3.up, sweepAngle * -0.5f);
 			angleMoved = 0;
 

@@ -10,10 +10,15 @@ public class SimpleMove : MonoBehaviour {
 	
 	private CharacterController player;
 
+	// this is used by the weapon and the player sprite, but not by the player object itself
+	private Quaternion lookRotation;
+
 	void Start ()
 	{
 		dead = false;
 		player = GetComponent<CharacterController>();
+
+		lookRotation = player.transform.rotation;
 	}
 
 
@@ -29,6 +34,10 @@ public class SimpleMove : MonoBehaviour {
 		dead = true;
 	}
 
+	public Quaternion getRotation() {
+		return lookRotation;
+	}
+
 	void Update ()
 	{
 		if (!dead) {
@@ -39,8 +48,7 @@ public class SimpleMove : MonoBehaviour {
 			player.Move (moveDirection * Time.deltaTime);
 			
 			if (h != 0 || v != 0) {
-				player.transform.rotation = Quaternion.LookRotation (new Vector3 (h, 0, v));
-				//player.transform.rotation = Quaternion.Lerp (player.transform.rotation, Quaternion.LookRotation (new Vector3 (h, 0, v)), Time.deltaTime * rotateSpeed);
+				lookRotation = Quaternion.LookRotation (new Vector3 (h, 0, v));
 			}
 		}
 	}
