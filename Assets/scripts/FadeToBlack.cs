@@ -16,7 +16,7 @@ public class FadeToBlack : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		fading = false;
-		color = Color.black;
+		color = Color.white;
 	}
 	
 	// Update is called once per frame
