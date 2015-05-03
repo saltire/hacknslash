@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FadeToBlack : MonoBehaviour {
 
-	private Color blackColor;
+	private Color color;
 	private bool fading;
 	private float fadeTime;
 
@@ -15,7 +15,10 @@ public class FadeToBlack : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		fading = false;
-		blackColor = Color.black;
+		color = Color.white;
+		color.a = 0f;
+		SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+		renderer.color = color;
 	}
 	
 	// Update is called once per frame
@@ -23,9 +26,9 @@ public class FadeToBlack : MonoBehaviour {
 		if (fading) {
 			if (fadeTime < 2) {
 				fadeTime += Time.deltaTime;
-				Renderer renderer = GetComponent<Renderer>();
-				blackColor.a = Mathf.Clamp(fadeTime / 2f, 0f, 2f);
-				renderer.material.color = blackColor;
+				SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+				color.a = Mathf.Clamp(fadeTime / 2f, 0f, 2f);
+				renderer.color = color;
 			}
 			else {
 				if (Input.GetKey(KeyCode.Space)) {
