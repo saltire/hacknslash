@@ -10,11 +10,13 @@ public class FadeToBlack : MonoBehaviour {
 	public void StartFade() {
 		fading = true;
 		fadeTime = 0f;
+		GetComponent<SpriteRenderer>().enabled = true;
 	}
 
 	// Use this for initialization
 	void Start () {
 		fading = false;
+		color = Color.black;
 	}
 	
 	// Update is called once per frame

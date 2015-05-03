@@ -76,7 +76,7 @@ public class EnemyNavMesh : MonoBehaviour {
 		return alive;
 	}
 
-	void OnTriggerEnter(Collider collision) {
+	void OnTriggerStay(Collider collision) {
 		if (collision.gameObject.tag == "DamageCollider") {
 			DamageScript script = collision.gameObject.transform.parent.gameObject.GetComponent<DamageScript>();
 			script.TakeDamage();
