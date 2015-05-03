@@ -10,7 +10,7 @@ public class StartScreenScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.KeypadEnter) || Input.GetKey(KeyCode.Space) || Input.GetAxis("Attack1") > 0 || Input.GetAxis("Attack2") > 0) {
+		if (Input.GetAxis("Submit") > 0) {
 			GameObject.FindGameObjectWithTag("FadeObject").GetComponent<TransitionScript>().StartFade();
 		}
 	}
