@@ -53,19 +53,6 @@ public class LevelManager : MonoBehaviour {
 				fadeStarted = true;
 				GameObject.FindGameObjectWithTag("FadeObject").GetComponent<FadeToBlack>().StartFade();
 			}
-			else {
-				foreach (GameObject spawnPoint in GameObject.FindGameObjectsWithTag("SpawnPoint")) {
-					if (spawnPoint.transform.parent == currentLevel.transform) {
-						EnemySpawnPoint esp = spawnPoint.GetComponent<EnemySpawnPoint>();
-						if (esp.ReachedLimit() && GameObject.FindGameObjectsWithTag("Enemy").Length == 0) {
-							foreach(GameObject player in players) {
-								player.GetComponent<SimpleMove>().SetAlive();
-								player.GetComponent<DamageScript>().ResetHP();
-							}
-						}
-					}
-				}
-			}
 		}
 	}
 }

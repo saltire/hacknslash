@@ -15,6 +15,8 @@ public class FadeToBlack : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		color = Color.black;
+		color.a = 0f;
 		fading = false;
 		color = Color.white;
 	}
@@ -29,7 +31,7 @@ public class FadeToBlack : MonoBehaviour {
 				renderer.color = color;
 			}
 			else {
-				if (Input.GetKey(KeyCode.Space)) {
+				if (Input.GetAxis("Submit") > 0) {
 					Application.LoadLevel(0);
 				}
 			}
