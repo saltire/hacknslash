@@ -48,7 +48,7 @@ public class WeaponScript : MonoBehaviour {
 				Vector3 vec = bouncer.transform.localPosition;
 				if (vec.x > -1.5f && vec.x < 1.5f) {
 					sweepAngle = 360f;
-					sweepTime = 0.6f;
+					sweepTime = 0.3f;
 				}
 			}
 		}

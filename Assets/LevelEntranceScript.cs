@@ -35,6 +35,10 @@ public class LevelEntranceScript : MonoBehaviour {
 					spawnPoint.GetComponent<EnemySpawnPoint>().isActive = (spawnPoint.transform.parent == transform.parent);
 				}
 
+				foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy")) {
+					Destroy(enemy);
+				}
+
 				GameObject.FindGameObjectWithTag("Levels").GetComponent<LevelManager>().currentLevel = targetLevel;
 			}
 		}
