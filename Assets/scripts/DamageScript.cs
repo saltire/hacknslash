@@ -3,6 +3,7 @@ using System.Collections;
 
 public class DamageScript : MonoBehaviour {
 	public AudioClip hitSound;
+	public float damageCooldown = 0.5f;
 
 	private int health;
 	private float damageTimer;
@@ -21,17 +22,16 @@ public class DamageScript : MonoBehaviour {
 	}
 
 	public void TakeDamage() {
-		if (damageTimer > 0.5f) {
+		if (damageTimer > damageCooldown && health > 0) {
 			damageTimer = 0f;
 			health--;
 			AudioSource.PlayClipAtPoint(hitSound, transform.position);
 			if (health < 0) {
 				health = 0;
 			}
-
-			if (health == 0) {
-				GetComponent<SimpleMove>().SetDead();
-			}
+		}
+		if (health == 0) {
+			GetComponent<SimpleMove>().SetDead();
 		}
 	}
 	
