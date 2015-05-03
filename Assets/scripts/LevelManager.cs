@@ -29,12 +29,12 @@ public class LevelManager : MonoBehaviour {
 				GUI.Label(new Rect(10, 10, 100, 20), "Player 1 HP: " + player.GetComponent<DamageScript>().GetHealth());
 			}
 			else if (player.name == "Player 2") {
-				GUI.Label(new Rect(300, 10, 100, 20), "Player 2 HP: " + player.GetComponent<DamageScript>().GetHealth());
+				GUI.Label(new Rect(600, 10, 100, 20), "Player 2 HP: " + player.GetComponent<DamageScript>().GetHealth());
 			}
 			i++;
 		}
 		GUI.Label(new Rect(10, 33, 100, 20), "Kill Count: " + playerOneKC);
-		GUI.Label(new Rect(300, 33, 100, 20), "Kill Count: " + playerTwoKC);
+		GUI.Label(new Rect(600, 33, 100, 20), "Kill Count: " + playerTwoKC);
 	}
 	
 	// Update is called once per frame
