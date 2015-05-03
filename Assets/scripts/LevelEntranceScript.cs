@@ -2,11 +2,16 @@
 using System.Collections;
 
 public class LevelEntranceScript : MonoBehaviour {
+	public float cameraMoveTime = 1f;
+
 	private GameObject mainCamera;
 	public GameObject targetLevel;
 	private Transform cameraPoint;
 	private int playerCount;
+
 	private bool waiting;
+	private Vector3 cameraOriginalPosition;
+	private float cameraMoveElapsed;
 	
 	void Start () {
 		mainCamera = GameObject.FindWithTag ("MainCamera");
@@ -14,6 +19,8 @@ public class LevelEntranceScript : MonoBehaviour {
 
 		waiting = true;
 		playerCount = 0;
+
+		cameraMoveElapsed = 0;
 	}
 
 	void OnTriggerEnter (Collider other) {
@@ -28,8 +35,9 @@ public class LevelEntranceScript : MonoBehaviour {
 			}
 
 			if (waiting && playerCount == playerTotal) {
-				// move camera
-				mainCamera.transform.position = cameraPoint.position;
+				// tell camera to move
+				cameraOriginalPosition = mainCamera.transform.position;
+				waiting = false;
 
 				// enable forward movement and disable backward movement
 				transform.Find ("Before Collider").gameObject.SetActive (false);
@@ -57,6 +65,14 @@ public class LevelEntranceScript : MonoBehaviour {
 	void OnTriggerExit (Collider other) {
 		if (other.tag == "Player") {
 			playerCount -= 1;
+		}
+	}
+
+	void Update () {
+		// move camera
+		if (!waiting && cameraMoveElapsed < cameraMoveTime) {
+			mainCamera.transform.position = Vector3.Lerp (cameraOriginalPosition, cameraPoint.position, cameraMoveElapsed / cameraMoveTime);
+			cameraMoveElapsed += Time.deltaTime;
 		}
 	}
 }
