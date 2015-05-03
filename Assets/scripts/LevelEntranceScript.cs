@@ -6,7 +6,6 @@ public class LevelEntranceScript : MonoBehaviour {
 	public GameObject targetLevel;
 	private Transform cameraPoint;
 	private int playerCount;
-	private int playerTotal;
 	private bool waiting;
 	
 	void Start () {
@@ -15,12 +14,18 @@ public class LevelEntranceScript : MonoBehaviour {
 
 		waiting = true;
 		playerCount = 0;
-		playerTotal = GameObject.FindGameObjectsWithTag ("Player").Length;
 	}
 
 	void OnTriggerEnter (Collider other) {
 		if (other.tag == "Player") {
 			playerCount += 1;
+
+			int playerTotal = 0;
+			foreach (GameObject player in GameObject.FindGameObjectsWithTag ("Player")) {
+				if (!player.GetComponent<SimpleMove>().IsDead()) {
+					playerTotal += 1;
+				}
+			}
 
 			if (waiting && playerCount == playerTotal) {
 				// move camera
