@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11490636}
   - 33: {fileID: 3342226}
   - 114: {fileID: 11491178}
+  - 114: {fileID: 11473306}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -276,6 +277,17 @@ MonoBehaviour:
   PlayerNumber: 1
   sweepAngle: 120
   sweepTime: .150000006
+--- !u!114 &11473306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9d7e27991e24e9da35cd7d4ff3b912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11490636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -311,9 +323,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: .25
-  m_Height: 1.5
+  m_Height: 2.5
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 1}
+  m_Center: {x: 0, y: 0, z: 1.25}
 --- !u!136 &13659078
 CapsuleCollider:
   m_ObjectHideFlags: 1
