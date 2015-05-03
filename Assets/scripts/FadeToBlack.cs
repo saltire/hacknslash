@@ -10,10 +10,13 @@ public class FadeToBlack : MonoBehaviour {
 	public void StartFade() {
 		fading = true;
 		fadeTime = 0f;
+		GetComponent<SpriteRenderer> ().enabled = true;
 	}
 
 	// Use this for initialization
 	void Start () {
+		color = Color.black;
+		color.a = 0f;
 		fading = false;
 	}
 	
@@ -27,7 +30,7 @@ public class FadeToBlack : MonoBehaviour {
 				renderer.color = color;
 			}
 			else {
-				if (Input.GetKey(KeyCode.Space)) {
+				if (Input.GetAxis("Submit") > 0) {
 					Application.LoadLevel(0);
 				}
 			}

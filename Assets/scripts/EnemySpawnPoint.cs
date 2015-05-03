@@ -24,7 +24,8 @@ public class EnemySpawnPoint : MonoBehaviour {
 		if (isActive) {
 			timeSinceSpawn += Time.deltaTime;
 			if (timeSinceSpawn > spawnInterval) {
-				Instantiate (enemy, transform.position, transform.rotation);
+				Instantiate(enemy, transform.position, transform.rotation);
+
 				timeSinceSpawn = 0;
 				spawnCount++;
 			}
