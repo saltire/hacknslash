@@ -13,5 +13,9 @@ public class StartScreenScript : MonoBehaviour {
 		if (Input.GetAxis("Submit") > 0) {
 			GameObject.FindGameObjectWithTag("FadeObject").GetComponent<TransitionScript>().StartFade();
 		}
+
+		if (Input.GetAxis("Escape") > 0) {
+			Application.Quit();
+		}
 	}
 }
